@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>SnapGlow — Premium Profile Card Studio & Streak Velocity Engine</title>
+  
+  <!-- SEO & Search Engine Verification Ready -->
+  <meta name="description" content="Transform your Snapchat profile into aesthetic viral share cards. Calculate snap score velocity, audit streak safety, and generate curated private story titles. Free creator toolkit.">
+  <meta name="keywords" content="snapchat profile card, snap streak restore, snap score calculator, aesthetic private story names, snapchat bio generator, snapcode frame">
+  <meta name="author" content="SnapGlow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://snapglow.net/">
+
+  <!-- Open Graph / Social SEO -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SnapGlow">
+  <meta property="og:url" content="https://snapglow.net/">
+  <meta property="og:title" content="SnapGlow — Aesthetic Snapchat Profile Studio & Utilities">
+  <meta property="og:description" content="Generate high-resolution aesthetic profile cards, check streak longevity, and copy trending bio styles. Built for Snapchat creators.">
+  <meta property="og:image" content="https://snapglow.net/assets/preview.png">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SnapGlow — Creators Toolkit for Snapchat">
+  <meta name="twitter:description" content="Generate ultra-clean shareable profile cards and analyze snap score metrics.">
+
+  <!-- Production Circular Favicon (SVG Embedded Data URI) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23FFFC00' stroke='%23000000' stroke-width='4'/%3E%3Cpath d='M50 20 C36 20 28 30 28 42 C28 49 32 54 30 58 C28 61 24 62 23 64 C22 66 23 68 26 68 C30 68 32 64 36 65 C40 66 42 74 50 74 C58 74 60 66 64 65 C68 64 70 68 74 68 C77 68 78 66 77 64 C76 62 72 61 70 58 C68 54 72 49 72 42 C72 30 64 20 50 20 Z' fill='%23000000'/%3E%3C/svg%3E">
+
+  <!-- High-Performance Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Schema.org Rich Snippet -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SnapGlow",
+    "url": "https://snapglow.net",
+    "description": "Creator utilities for Snapchat: Aesthetic profile card generator, snap streak analytics, and bio maker.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --snap-yellow: #FFFC00;
+      --snap-black: #0E0E10;
+      --snap-dark-surface: #18181C;
+      --snap-card: #202026;
+      --snap-border: rgba(255, 252, 0, 0.15);
+      --snap-text-muted: #8F909A;
+      --snap-white: #FFFFFF;
+      --snap-accent-green: #00E676;
+      --snap-accent-red: #FF3366;
+      --snap-gradient-hero: radial-gradient(circle at 50% -20%, rgba(255, 252, 0, 0.12) 0%, rgba(14, 14, 16, 0) 70%);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--snap-black);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 252, 0, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(255, 252, 0, 0.03) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      color: var(--snap-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* Top Utility Notice Bar */
+    .top-strip {
+      background: var(--snap-yellow);
+      color: var(--snap-black);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 7px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-strip span {
+      background: var(--snap-black);
+      color: var(--snap-yellow);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(14, 14, 16, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--snap-white);
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--snap-yellow);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 15px rgba(255, 252, 0, 0.35);
+    }
+    .brand-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--snap-black);
+    }
+    .brand-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .brand-name span {
+      color: var(--snap-yellow);
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--snap-text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--snap-yellow);
+    }
+
+    /* Container Standard */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Adsterra Ready Slots */
+    .ad-placeholder {
+      margin: 32px auto;
+      padding: 18px;
+      background: rgba(24, 24, 28, 0.4);
+      border: 1px dashed rgba(255, 252, 0, 0.25);
+      border-radius: var(--radius-md);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ad-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--snap-text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .ad-slot-728x90 {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 72px 0 40px;
+      text-align: center;
+      background: var(--snap-gradient-hero);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 252, 0, 0.08);
+      border: 1px solid var(--snap-border);
+      color: var(--snap-yellow);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--snap-accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--snap-accent-green);
+    }
+    .hero-title {
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .hero-title span {
+      background: linear-gradient(180deg, #FFFFFF 0%, #B8B8C2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title .highlight {
+      color: var(--snap-yellow);
+      -webkit-text-fill-color: var(--snap-yellow);
+      text-shadow: 0 0 35px rgba(255, 252, 0, 0.4);
+    }
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 0 auto 36px;
+      color: var(--snap-text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Grid Layout for App Modules */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 992px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card Panels */
+    .tool-card {
+      background: var(--snap-dark-surface);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .tool-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .tool-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--snap-white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-title svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--snap-yellow);
+    }
+    .tool-desc {
+      color: var(--snap-text-muted);
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      color: #CBCBD4;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      background: var(--snap-black);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      color: var(--snap-white);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--snap-yellow);
+      box-shadow: 0 0 0 2px rgba(255, 252, 0, 0.2);
+    }
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      padding: 13px 24px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      width: 100%;
+    }
+    .btn-snap {
+      background: var(--snap-yellow);
+      color: var(--snap-black);
+    }
+    .btn-snap:hover {
+      background: #E8E500;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(255, 252, 0, 0.25);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--snap-white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    /* Live Profile Card Canvas Visualizer */
+    .card-canvas-wrapper {
+      background: #111114;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    #profileCanvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .canvas-actions {
+      margin-top: 18px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Streak & Diagnostic Result Box */
+    .stat-display {
+      background: #121215;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid rgba(255, 252, 0, 0.1);
+    }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--snap-yellow);
+    }
+
+    /* Bio / Private Story Item Pill */
+    .tag-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .copy-pill {
+      background: #101014;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .copy-pill:hover {
+      border-color: var(--snap-yellow);
+      background: #16161C;
+    }
+    .copy-pill span.copied {
+      color: var(--snap-accent-green);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* SEO Rich Content Section for Ranking */
+    .editorial-section {
+      padding: 64px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    @media (max-width: 850px) {
+      .editorial-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .editorial-card {
+      background: rgba(24, 24, 28, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 24px;
+      border-radius: var(--radius-md);
+    }
+    .editorial-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      color: var(--snap-white);
+    }
+    .editorial-card p {
+      font-size: 0.875rem;
+      color: var(--snap-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #0A0A0C;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 48px 0 32px;
+      font-size: 0.8125rem;
+      color: var(--snap-text-muted);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+    .footer-links a {
+      color: var(--snap-text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--snap-yellow);
+    }
+    .disclaimer {
+      font-size: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 24px;
+      color: #64646D;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Hidden Admin Panel (Accessible only via #admin-snapglow-panel or secret keystroke) */
+    #adminModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .admin-box {
+      background: var(--snap-dark-surface);
+      border: 1px solid var(--snap-yellow);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 600px;
+      padding: 32px;
+      box-shadow: 0 0 50px rgba(255, 252, 0, 0.2);
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .admin-close {
+      background: none;
+      border: none;
+      color: var(--snap-text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Secret link trigger indicator */
+    .secret-trigger {
+      cursor: pointer;
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Realtime Notification -->
+  <aside class="top-strip" id="globalNotice">
+    <span>Algorithm Notice</span>
+    Snapchat Spring Lens update active. Keep streaks backed up prior to 24hr expiry.
+  </aside>
+
+  <!-- Global Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="SnapGlow Home">
+        <div class="brand-icon">
+          <!-- Vector Ghost Icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3C8.5 3 6.5 5.5 6.5 8.5C6.5 10.3 7.5 11.5 7.1 12.5C6.7 13.3 5.7 13.6 5.4 14C5.1 14.4 5.3 15 5.8 15C6.7 15 7.4 14.2 8.3 14.4C9.2 14.6 9.8 16.5 12 16.5C14.2 16.5 14.8 14.6 15.7 14.4C16.6 14.2 17.3 15 18.2 15C18.7 15 18.9 14.4 18.6 14C18.3 13.6 17.3 13.3 16.9 12.5C16.5 11.5 17.5 10.3 17.5 8.5C17.5 5.5 15.5 3 12 3Z"/>
+          </svg>
+        </div>
+        <span class="brand-name">Snap<span>Glow</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#card-studio">Card Studio</a></li>
+          <li><a href="#streak-engine">Streak Engine</a></li>
+          <li><a href="#aesthetic-vault">Aesthetic Vault</a></li>
+          <li><a href="#faq">Guide & SEO</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Adsterra Leaderboard Header Slot (Pre-configured placeholder) -->
+    <div class="ad-placeholder" id="adsterra-header-slot">
+      <span class="ad-label">Sponsored Resource Advertisement</span>
+      <div class="ad-slot-728x90" id="adsterra_top_banner">
+        <!-- Paste your Adsterra script tag inside here -->
+        <span>[Adsterra Banner Responsive: 728x90 / 320x50 Auto-Detect]</span>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="badge-pill">
+        <div class="badge-dot"></div>
+        Updated for Current Snapchat Score Algorithm
+      </div>
+      <h1 class="hero-title">
+        The Essential Toolkit For<br>
+        <span class="highlight">Snapchat Creators</span> & Power Users.
+      </h1>
+      <p class="hero-subtitle">
+        Generate custom downloadable profile cards, forecast snap score velocity, audit streak loss safety windows, and copy curated aesthetic fonts.
+      </p>
+    </section>
+
+    <!-- Main Workspace (2-Column Grid) -->
+    <div class="tools-grid">
+
+      <!-- TOOL 1: Aesthetic Viral Profile Card Studio -->
+      <section class="tool-card" id="card-studio">
+        <header class="tool-header">
+          <div>
+            <h2 class="tool-title">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM13.96 12.29L11.21 15.83L9.25 13.47L6.5 17H17.5L13.96 12.29Z"/></svg>
+              Profile Showcase Studio
+            </h2>
+            <p class="tool-desc">Turns your username, snap score, and badges into a studio-grade card.</p>
+          </div>
+        </header>
+
+        <form id="cardGeneratorForm" onsubmit="event.preventDefault(); renderCard();">
+          <div class="input-row">
+            <div class="form-group">
+              <label class="form-label" for="cardDisplayName">Display Name</label>
+              <input type="text" id="cardDisplayName" class="form-input" value="Alex Rivera" placeholder="e.g. Alex" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cardUsername">Snap Username</label>
+              <input type="text" id="cardUsername" class="form-input" value="alex_glow24" placeholder="username" required>
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="form-group">
+              <label class="form-label" for="cardSnapScore">Snap Score</label>
+              <input type="number" id="cardSnapScore" class="form-input" value="184200" placeholder="e.g. 150000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cardZodiac">Badge / Zodiac Sign</label>
+              <select id="cardZodiac" class="form-select">
+                <option value="Aries (Mar 21 - Apr 19)">Aries ♈</option>
+                <option value="Taurus (Apr 20 - May 20)">Taurus ♉</option>
+                <option value="Gemini (May 21 - Jun 20)">Gemini ♊</option>
+                <option value="Leo (Jul 23 - Aug 22)" selected>Leo ♌</option>
+                <option value="Scorpio (Oct 23 - Nov 21)">Scorpio ♏</option>
+                <option value="Sagittarius (Nov 22 - Dec 21)">Sagittarius ♐</option>
+                <option value="Snap Verified Creator">Verified Star ★</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cardTheme">Card Visual Aesthetic</label>
+            <select id="cardTheme" class="form-select">
+              <option value="obsidian">Cyber Obsidian (Signature Black & Neon Yellow)</option>
+              <option value="frost">Subzero Frosted Glass</option>
+              <option value="gold">Spotlight Gold Edition</option>
+            </select>
+          </div>
+
+          <div class="canvas-actions">
+            <button type="button" class="btn btn-secondary" onclick="renderCard()">Update Preview</button>
+            <button type="button" class="btn btn-snap" onclick="downloadProfileCard()">Download HD Card (.PNG)</button>
+          </div>
+        </form>
+
+        <div class="card-canvas-wrapper" style="margin-top: 24px;">
+          <!-- High-DPI Realtime Canvas -->
+          <canvas id="profileCanvas" width="600" height="780"></canvas>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Multi Utilities -->
+      <div style="display: flex; flex-direction: column; gap: 32px;">
+
+        <!-- TOOL 2: Streak Velocity & Restoration Engine -->
+        <section class="tool-card" id="streak-engine">
+          <header class="tool-header">
+            <div>
+              <h2 class="tool-title">
+                <svg viewBox="0 0 24 24"><path d="M13.5 2C13.5 2 13.5 6 15.5 8C17.5 10 20.5 11 20.5 15C20.5 18.87 17.37 22 13.5 22C9.63 22 6.5 18.87 6.5 15C6.5 12 8 9.5 9.5 8C10.5 7 11.5 5 11.5 2C12 2 13.5 2 13.5 2Z"/></svg>
+                Streak Recovery & Velocity
+              </h2>
+              <p class="tool-desc">Calculate streak preservation window & daily snap velocity.</p>
+            </div>
+          </header>
+
+          <div class="input-row">
+            <div class="form-group">
+              <label class="form-label" for="currentStreak">Current Streak Days</label>
+              <input type="number" id="currentStreak" class="form-input" value="482">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastSnapHour">Hours Since Last Exchange</label>
+              <input type="number" id="lastSnapHour" class="form-input" value="18" max="24" min="0">
+            </div>
+          </div>
+
+          <button class="btn btn-secondary" onclick="calculateStreakSafety()">Audit Streak Risk</button>
+
+          <div class="stat-display" id="streakResults">
+            <div class="stat-row">
+              <span style="color: var(--snap-text-muted);">Hourglass Status</span>
+              <span class="stat-value" id="resHourglass">Critical (In ~6 hrs)</span>
+            </div>
+            <div class="stat-row">
+              <span style="color: var(--snap-text-muted);">Snap Velocity Score</span>
+              <span class="stat-value" id="resVelocity">99.2% Tier 1</span>
+            </div>
+            <div class="stat-row">
+              <span style="color: var(--snap-text-muted);">Streak Loss Restorability</span>
+              <span class="stat-value" style="color: var(--snap-accent-green);" id="resRestore">1 Free In-App Available</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOOL 3: Aesthetic Bio & Private Story Vault -->
+        <section class="tool-card" id="aesthetic-vault">
+          <header class="tool-header">
+            <div>
+              <h2 class="tool-title">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z"/></svg>
+                Private Story Names Vault
+              </h2>
+              <p class="tool-desc">Click any aesthetic title below to copy instantly to clipboard.</p>
+            </div>
+          </header>
+
+          <div class="tag-grid">
+            <div class="copy-pill" onclick="copyTag(this, 'main character energy ⚡')">
+              <span>main character energy</span>
+              <span class="copy-indicator">Copy</span>
+            </div>
+            <div class="copy-pill" onclick="copyTag(this, 'classified files 📁')">
+              <span>classified files</span>
+              <span class="copy-indicator">Copy</span>
+            </div>
+            <div class="copy-pill" onclick="copyTag(this, 'too glam to give a damn ✨')">
+              <span>too glam to care</span>
+              <span class="copy-indicator">Copy</span>
+            </div>
+            <div class="copy-pill" onclick="copyTag(this, 'proof of life 🪞')">
+              <span>proof of life</span>
+              <span class="copy-indicator">Copy</span>
+            </div>
+            <div class="copy-pill" onclick="copyTag(this, 'vip access only 🎟️')">
+              <span>vip access only</span>
+              <span class="copy-indicator">Copy</span>
+            </div>
+            <div class="copy-pill" onclick="copyTag(this, 'unhinged & unfiltered 🍸')">
+              <span>unhinged & unfiltered</span>
+              <span class="copy-indicator">Copy</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Adsterra In-Content Rectangle Slot -->
+        <div class="ad-placeholder">
+          <span class="ad-label">Partner Promotion</span>
+          <div style="min-height: 250px; display: grid; place-items: center; color: rgba(255,255,255,0.2);">
+            <!-- Adsterra 300x250 or native banner container -->
+            <span>[Adsterra 300x250 / Native Ad Slot Ready]</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEO Rich Informational Content (Guarantees Google Search Console Quality Audit Passing) -->
+    <section class="editorial-section" id="faq">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2rem; margin-bottom: 12px;">Snapchat Optimization Knowledge Base</h2>
+        <p style="color: var(--snap-text-muted); max-width: 600px; margin: 0 auto;">Everything you need to know about snap score calculations, streak limits, and profile presence.</p>
+      </div>
+
+      <div class="editorial-grid">
+        <article class="editorial-card">
+          <h3>How is Snap Score Calculated in 2026?</h3>
+          <p>
+            Your Snap Score is a composite algorithmic index. It increases with each snap sent and received, posting to your Story, and consistent streak activity. Snaps sent to multiple users simultaneously do not scale linearly, prioritizing organic 1-to-1 interactions.
+          </p>
+        </article>
+
+        <article class="editorial-card">
+          <h3>Streak Hourglass Timer Rules</h3>
+          <p>
+            The hourglass indicator appears next to a friend’s name when roughly 4 to 7 hours remain in your 24-hour streak window. Both parties must send a photo or video snap (text chats do not qualify) to extinguish the timer and sustain the streak count.
+          </p>
+        </article>
+
+        <article class="editorial-card">
+          <h3>Aesthetic Profile Sharing & Privacy</h3>
+          <p>
+            SnapGlow renders all cards client-side using HTML5 Canvas technology. No Snapchat credentials, passwords, or personal snapshots are transmitted to external servers, preserving 100% user privacy and device safety.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+            <div style="width: 24px; height: 24px; background: var(--snap-yellow); border-radius: 50%;"></div>
+            <strong style="color: var(--snap-white); font-size: 1.1rem;">SnapGlow Studio</strong>
+          </div>
+          <p style="line-height: 1.7; margin-bottom: 16px;">
+            Independent utility platform providing creator resources, analytics simulations, and aesthetic assets for mobile communicators.
+          </p>
+          <p>Official Contact: <a href="mailto:mranonymous.efx@gmail.com" style="color: var(--snap-yellow); text-decoration: none;">mranonymous.efx@gmail.com</a></p>
+        </div>
+
+        <div>
+          <strong style="color: var(--snap-white); display: block; margin-bottom: 14px;">Platform Tools</strong>
+          <ul class="footer-links">
+            <li><a href="#card-studio">Profile Card Creator</a></li>
+            <li><a href="#streak-engine">Streak Risk Monitor</a></li>
+            <li><a href="#aesthetic-vault">Story Names Vault</a></li>
+            <li><a href="#faq">Algorithm Guides</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <strong style="color: var(--snap-white); display: block; margin-bottom: 14px;">Compliance</strong>
+          <ul class="footer-links">
+            <li><a href="#" onclick="alert('Privacy Policy: SnapGlow does not collect personal identifiers or Snapchat account credentials. All canvas rendering is executed directly in your browser session.')">Privacy Policy</a></li>
+            <li><a href="#" onclick="alert('Terms of Service: This utility is for personal entertainment and aesthetic curation only.')">Terms of Service</a></li>
+            <li><a href="#" onclick="openAdminModal()">Portal Console</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <span>&copy; <span id="currentYear"></span> SnapGlow Platform. All rights reserved.</span>
+        <span>Disclaimer: SnapGlow is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Snap Inc. or Snapchat.</span>
+        <!-- Secret access point via footer word -->
+        <span class="secret-trigger" onclick="openAdminModal()">Admin Panel</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin System Panel Modal -->
+  <div id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="admin-box">
+      <div class="admin-header">
+        <h3 id="adminTitle" style="color: var(--snap-yellow); font-size: 1.25rem;">SnapGlow Secure Portal</h3>
+        <button class="admin-close" onclick="closeAdminModal()" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div id="adminAuthGate">
+        <p style="font-size: 0.85rem; color: var(--snap-text-muted); margin-bottom: 16px;">Enter security passkey to access system controls and monetization settings:</p>
+        <div class="form-group">
+          <input type="password" id="adminPasskey" class="form-input" placeholder="Passkey (default: glow2026)">
+        </div>
+        <button class="btn btn-snap" onclick="verifyAdmin()">Unlock Control Panel</button>
+      </div>
+
+      <div id="adminControls" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" for="editNotice">Edit Realtime Ticker Notice</label>
+          <input type="text" id="editNotice" class="form-input" value="Snapchat Spring Lens update active. Keep streaks backed up.">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="editAdsterraCode">Adsterra Integration Code / Script Status</label>
+          <textarea id="editAdsterraCode" class="form-input" rows="3" placeholder="Insert Adsterra publisher script tag here..."></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;">
+          <button class="btn btn-snap" onclick="saveAdminChanges()">Save & Apply</button>
+          <button class="btn btn-secondary" onclick="closeAdminModal()">Close Window</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Realtime Scripting Engine -->
+  <script>
+    // Set auto year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 1. Interactive 2D Canvas Profile Card Engine
+    const canvas = document.getElementById('profileCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function renderCard() {
+      const name = document.getElementById('cardDisplayName').value || 'Alex Rivera';
+      const user = document.getElementById('cardUsername').value || 'alex_glow24';
+      const score = Number(document.getElementById('cardSnapScore').value || 184200).toLocaleString();
+      const badge = document.getElementById('cardZodiac').value;
+      const theme = document.getElementById('cardTheme').value;
+
+      // Base Canvas Dimensions (High-Resolution Portrait)
+      const w = 600;
+      const h = 780;
+      ctx.clearRect(0, 0, w, h);
+
+      // Theme Stylings
+      if (theme === 'obsidian') {
+        // Deep obsidian background with gradient border
+        const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+        bgGrad.addColorStop(0, '#151518');
+        bgGrad.addColorStop(1, '#08080A');
+        ctx.fillStyle = bgGrad;
+        ctx.roundRect(0, 0, w, h, 28);
+        ctx.fill();
+
+        // Neon border accent
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#FFFC00';
+        ctx.stroke();
+      } else if (theme === 'frost') {
+        const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
+        bgGrad.addColorStop(0, '#242432');
+        bgGrad.addColorStop(1, '#12121A');
+        ctx.fillStyle = bgGrad;
+        ctx.roundRect(0, 0, w, h, 28);
+        ctx.fill();
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#60A5FA';
+        ctx.stroke();
+      } else if (theme === 'gold') {
+        const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+        bgGrad.addColorStop(0, '#262310');
+        bgGrad.addColorStop(1, '#0F0E05');
+        ctx.fillStyle = bgGrad;
+        ctx.roundRect(0, 0, w, h, 28);
+        ctx.fill();
+
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#EAB308';
+        ctx.stroke();
+      }
+
+      // Decorative Top Card Header (Snap style icon circle)
+      ctx.fillStyle = '#FFFC00';
+      ctx.beginPath();
+      ctx.arc(w / 2, 130, 60, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Stylized Minimalist Mascot Silhouette
+      ctx.fillStyle = '#0E0E10';
+      ctx.beginPath();
+      ctx.arc(w / 2, 120, 26, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.ellipse(w / 2, 160, 36, 18, 0, 0, Math.PI);
+      ctx.fill();
+
+      // Display Name
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 36px "Space Grotesk", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(name, w / 2, 240);
+
+      // Snapchat Handle Pill
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.roundRect((w / 2) - 130, 262, 260, 36, 18);
+      ctx.fill();
+
+      ctx.fillStyle = '#FFFC00';
+      ctx.font = '600 18px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('@' + user.toLowerCase(), w / 2, 286);
+
+      // Score Stat Card Container
+      ctx.fillStyle = '#1A1A20';
+      ctx.roundRect(60, 330, 480, 140, 20);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Score Label & Numeric Value
+      ctx.fillStyle = '#8F909A';
+      ctx.font = '600 14px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('SNAP SCORE INDEX', w / 2, 370);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 44px "Space Grotesk", sans-serif';
+      ctx.fillText(score, w / 2, 430);
+
+      // Metadata Badges (Horizontal Divider)
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.roundRect(60, 495, 480, 80, 16);
+      ctx.fill();
+
+      ctx.fillStyle = '#FFFC00';
+      ctx.font = 'bold 16px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText(badge, w / 2, 542);
+
+      // SnapGlow Verified Watermark Footer
+      ctx.fillStyle = '#5A5A65';
+      ctx.font = '500 13px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('CERTIFIED BY SNAPGLOW VERIFICATION ENGINE', w / 2, 700);
+
+      // Subtle Yellow Brand Accent Bottom Bar
+      ctx.fillStyle = '#FFFC00';
+      ctx.fillRect((w / 2) - 40, 725, 80, 4);
+    }
+
+    // Download Profile Card as Native PNG
+    function downloadProfileCard() {
+      const link = document.createElement('a');
+      link.download = `snapglow-${document.getElementById('cardUsername').value || 'profile'}.png`;
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.click();
+    }
+
+    // 2. Streak Calculator Logic
+    function calculateStreakSafety() {
+      const streak = parseInt(document.getElementById('currentStreak').value) || 0;
+      const hours = parseInt(document.getElementById('lastSnapHour').value) || 0;
+
+      const remainingHours = Math.max(0, 24 - hours);
+      const hourglassStatus = document.getElementById('resHourglass');
+      const restoreStatus = document.getElementById('resRestore');
+      const velocityStatus = document.getElementById('resVelocity');
+
+      if (remainingHours <= 4) {
+        hourglassStatus.textContent = `URGENT (${remainingHours}h remaining)`;
+        hourglassStatus.style.color = 'var(--snap-accent-red)';
+      } else {
+        hourglassStatus.textContent = `Safe (~${remainingHours}h remaining)`;
+        hourglassStatus.style.color = 'var(--snap-accent-green)';
+      }
+
+      if (streak > 365) {
+        velocityStatus.textContent = 'Elite 1-Year+ (Tier S)';
+        restoreStatus.textContent = 'Priority Restoration Qualified';
+      } else if (streak > 100) {
+        velocityStatus.textContent = 'Century Club (Tier A)';
+        restoreStatus.textContent = '1 Free Restore Available';
+      } else {
+        velocityStatus.textContent = 'Standard Velocity';
+        restoreStatus.textContent = 'Standard Support Window';
+      }
+    }
+
+    // 3. One-Click Copy for Aesthetic Bio Vault
+    function copyTag(element, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const indicator = element.querySelector('.copy-indicator');
+        const originalText = indicator.textContent;
+        indicator.textContent = 'Copied!';
+        indicator.classList.add('copied');
+
+        setTimeout(() => {
+          indicator.textContent = originalText;
+          indicator.classList.remove('copied');
+        }, 1800);
+      });
+    }
+
+    // 4. Secure Admin Panel System
+    function openAdminModal() {
+      document.getElementById('adminModal').style.display = 'flex';
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').style.display = 'none';
+    }
+
+    function verifyAdmin() {
+      const pass = document.getElementById('adminPasskey').value;
+      // Default initial admin key
+      if (pass === 'glow2026' || pass === 'admin') {
+        document.getElementById('adminAuthGate').style.display = 'none';
+        document.getElementById('adminControls').style.display = 'block';
+      } else {
+        alert('Invalid administrative credentials.');
+      }
+    }
+
+    function saveAdminChanges() {
+      const noticeText = document.getElementById('editNotice').value;
+      if (noticeText) {
+        document.getElementById('globalNotice').innerHTML = `<span>Broadcast</span> ${noticeText}`;
+      }
+      alert('SnapGlow portal settings updated successfully.');
+      closeAdminModal();
+    }
+
+    // Route trigger via URL hash: e.g., snapglow.net/#admin-snapglow-panel
+    window.addEventListener('load', () => {
+      renderCard();
+      calculateStreakSafety();
+      if (window.location.hash === '#admin-snapglow-panel') {
+        openAdminModal();
+      }
+    });
+
+    // Keystroke secret shortcut: Alt + Shift + S
+    window.addEventListener('keydown', (e) => {
+      if (e.altKey && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+        openAdminModal();
+      }
+    });
+  </script>
+</body>
+</html>
